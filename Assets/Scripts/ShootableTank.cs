@@ -19,7 +19,7 @@ public abstract class ShootableTank : Tank
 
     protected void Shoot()
     {
-        Instantiate(_projectile, _shotPoint.position, _tower.rotation);
+        Instantiate(_projectile, _shotPoint.position, _shotPoint.rotation);
         //_objectPooler.SpawnFromPool(_projectileTag,_shotPoint.position,transform.rotation);
     }
 }
