@@ -105,7 +105,7 @@ namespace MFlight
                 UpdateCameraPos();
 
             RotateRig();
-            //UpdateAimDistant();
+            UpdateAimDistant();
         }
 
         private void FixedUpdate()
@@ -172,11 +172,9 @@ namespace MFlight
         {
             RaycastHit raycastHit;
 
-            if(Physics.Raycast(transform.position,transform.forward,out raycastHit,500f,usageMask))
+            if(Physics.Raycast(transform.position,mouseAim.forward,out raycastHit,500f,usageMask))
             {
                 aimDistance = Vector3.Distance(mouseAim.position,raycastHit.point);
-                Debug.DrawRay(transform.position, transform.TransformDirection(transform.forward) * 500, Color.yellow);
-                Debug.Log("Сука");
             }
         }
 

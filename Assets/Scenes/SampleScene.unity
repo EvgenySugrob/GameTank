@@ -175,6 +175,43 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!1 &177181644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 177181645}
+  m_Layer: 0
+  m_Name: PivotTower (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &177181645
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177181644}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.4156412, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 302612566}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &302612566 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1501655434734729405, guid: 6211cc75b8f0f4e4cb03720e43c3af2d,
+    type: 3}
+  m_PrefabInstance: {fileID: 8383318453004401871}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &326008168
 GameObject:
   m_ObjectHideFlags: 3
@@ -790,7 +827,7 @@ PrefabInstance:
         type: 3}
       propertyPath: aircraft
       value: 
-      objectReference: {fileID: 1338688872}
+      objectReference: {fileID: 1861642626}
     - target: {fileID: 114412280367074530, guid: 1ffc29c315992624cb793d6cbf2c4ac1,
         type: 3}
       propertyPath: _turretTank
@@ -800,6 +837,11 @@ PrefabInstance:
         type: 3}
       propertyPath: showDebugInfo
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114412280367074530, guid: 1ffc29c315992624cb793d6cbf2c4ac1,
+        type: 3}
+      propertyPath: usageMask.m_Bits
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2209,6 +2251,12 @@ Transform:
   - {fileID: 1322821191}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1861642626 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3489482998139072309, guid: 6211cc75b8f0f4e4cb03720e43c3af2d,
+    type: 3}
+  m_PrefabInstance: {fileID: 8383318453004401871}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2010321024 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114412280367074530, guid: 1ffc29c315992624cb793d6cbf2c4ac1,
@@ -2368,7 +2416,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7611561020914055092, guid: 6211cc75b8f0f4e4cb03720e43c3af2d, type: 3}
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1501655434734729405, guid: 6211cc75b8f0f4e4cb03720e43c3af2d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 177181645}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6211cc75b8f0f4e4cb03720e43c3af2d, type: 3}
 --- !u!1660057539 &9223372036854775807

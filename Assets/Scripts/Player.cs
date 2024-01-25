@@ -49,28 +49,29 @@ public class Player : ShootableTank
         target = target * (-1);
         target.y = 0;
         Quaternion rotation = Quaternion.LookRotation(target);
-        _tower.rotation = Quaternion.Lerp(_tower.rotation, rotation, _rotationTowerSpeed * Time.fixedDeltaTime);
+        _tower.rotation = Quaternion.Lerp(_tower.rotation, rotation, _rotationTowerSpeed * Time.deltaTime);
 
         //поворот дула
         Vector3 tower = _cameraRig.rotation.eulerAngles;
-        _tower.rotation = Quaternion.Euler(_tower.rotation.x, tower.y, _tower.rotation.z);
+        _tower.rotation = Quaternion.Euler(0, tower.y, 0);
         tower.x = (tower.x > 180) ? tower.x - 360 : tower.x;
         tower.x = Mathf.Clamp(tower.x, -15f, 15f);
-        _pivotTurret.localRotation = Quaternion.Euler(tower.x, _pivotTurret.rotation.y, _pivotTurret.rotation.z);
+        _pivotTurret.localRotation = Quaternion.Euler(tower.x, 0, 0);
 
-        //
-        _pivotTower.rotation = Quaternion.Euler(tower.x,_tower.rotation.y,_pivotTower.rotation.z);
+        //Поворот пивота башни
+        //Vector3 pivotTower = _tower.rotation.eulerAngles;
+        //_pivotTower.rotation = Quaternion.Euler(tower.x, pivotTower.y, 0);
     }
     private void FixedUpdate()
     {
         Move();
-        
     }
     private void Update()
     {
-        RotationTower();
+
         //SetAngle(Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
+        RotationTower();
         if (_timer<=0)
         {
             if (Input.GetMouseButton(0))

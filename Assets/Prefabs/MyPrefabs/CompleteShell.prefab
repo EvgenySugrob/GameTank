@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5287416459396453633}
   - component: {fileID: 2187596766344948404}
   - component: {fileID: 284080578622250962}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Burst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4918,7 +4918,7 @@ GameObject:
   - component: {fileID: 5105637840882640658}
   - component: {fileID: 5240833244842982386}
   - component: {fileID: 4418627724573150350}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9747,7 +9747,7 @@ GameObject:
   - component: {fileID: 7954755448477505954}
   - component: {fileID: 9050310351467720579}
   - component: {fileID: 1900499978876267822}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Trails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14570,7 +14570,7 @@ GameObject:
   - component: {fileID: 1514485041243148050}
   - component: {fileID: 3877562264160084029}
   - component: {fileID: 3384366950368268884}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CompleteShellExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19554,7 +19554,7 @@ GameObject:
   - component: {fileID: 8311172915329229583}
   - component: {fileID: 4048369876038715983}
   - component: {fileID: 2905732237970266604}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CompleteShell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
