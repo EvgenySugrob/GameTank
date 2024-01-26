@@ -4,25 +4,24 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private int _damage = 5;
+    [SerializeField] private float _damage = 5;
     [SerializeField] private float _speed = 5f;
     [SerializeField] private string _tag="";
     [SerializeField] private Rigidbody _rigidbody;
-    [SerializeField] private ParticleSystem _explosionParticle;
+    [SerializeField] private string _poolerTag;
+
+    private ObjectPooler _pooler;
 
     private float _timerDestroy = 5f;
 
     private void Start()
     {
+        _pooler = ObjectPooler.instance;
         _rigidbody.velocity = transform.forward * _speed;
     }
 
     private void Update()
     {
-        //_rigidbody.AddForce(transform.forward * _speed);
-        //transform.Translate(Vector2.down*_speed*Time.deltaTime);
-
-
         if(_timerDestroy <= 0)
         {
             gameObject.SetActive(false);
@@ -39,13 +38,9 @@ public class Projectile : MonoBehaviour
         if (other.gameObject.GetComponent<Tank>() != null && other.gameObject.tag != _tag)
         {
             other.gameObject.GetComponent<Tank>().TakeDamage(_damage);
-            
         }
         _rigidbody.velocity = Vector3.zero;
-        _explosionParticle.Play();
-        if(_explosionParticle.isStopped)
-        {
-            Destroy(gameObject);
-        }
+        _pooler.SpawnFromPool(_poolerTag, transform.position);
+        Destroy(gameObject);
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RangeTank : ShootableTank
 {
+    [SerializeField] UIEnemy _uiEnemy;
     [SerializeField] float _distansToPlayer = 5f;
     private float _timer;
     private Transform _target;
@@ -12,6 +13,13 @@ public class RangeTank : ShootableTank
     {
         base.Start();
         _target = FindObjectOfType<Player>().transform;
+        _uiEnemy.SetStartParam(_maxHealth, _target);
+    }
+
+    public override void TakeDamage(float damage)
+    {
+        base.TakeDamage(damage);
+        _uiEnemy.UpdateHealthBar(_currentHealth);
     }
 
     protected override void Move()
@@ -54,4 +62,5 @@ public class RangeTank : ShootableTank
         Quaternion rotation = Quaternion.LookRotation(target);
         _tower.rotation = Quaternion.Lerp(_tower.rotation, rotation, _rotationTowerSpeed * Time.fixedDeltaTime);
     }
+
 }

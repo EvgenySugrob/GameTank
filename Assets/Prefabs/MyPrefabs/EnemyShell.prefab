@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5287416459396453633}
   - component: {fileID: 2187596766344948404}
   - component: {fileID: 284080578622250962}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Burst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4918,7 +4918,7 @@ GameObject:
   - component: {fileID: 7954755448477505954}
   - component: {fileID: 9050310351467720579}
   - component: {fileID: 1900499978876267822}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Trails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9741,7 +9741,7 @@ GameObject:
   - component: {fileID: 1514485041243148050}
   - component: {fileID: 3877562264160084029}
   - component: {fileID: 3384366950368268884}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CompleteShellExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14720,7 +14720,7 @@ GameObject:
   - component: {fileID: 4576504474438286236}
   - component: {fileID: 1798652428521553480}
   - component: {fileID: 278009066911455737}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14750,7 +14750,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8256133234455598232}
   serializedVersion: 8
-  lengthInSec: 5
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -14825,7 +14825,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.35
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -19554,7 +19554,7 @@ GameObject:
   - component: {fileID: 8311172915329229583}
   - component: {fileID: 4048369876038715983}
   - component: {fileID: 2905732237970266604}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EnemyShell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19776,7 +19776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 4
-  _speed: 25
+  _speed: 35
   _tag: EnemyDefaultShell
   _rigidbody: {fileID: 4340731527045385287}
-  _explosionParticle: {fileID: 1514485041243148050}
+  _poolerTag: 

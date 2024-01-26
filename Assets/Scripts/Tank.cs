@@ -1,19 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody))]
 public abstract class Tank : MonoBehaviour
 {
     [SerializeField] protected Transform _tower;
-    [SerializeField] protected int _maxHealth;
+    [SerializeField] protected float _maxHealth;
     [SerializeField] protected float _speed;
     [SerializeField] protected float _angleOffset;
     [SerializeField] protected float _rotationSpeed;
     [SerializeField] protected float _rotationTowerSpeed;
     [SerializeField] private int _points;
+
     protected Rigidbody _rigidbody;
-    protected int _currentHealth;
+    protected float _currentHealth;
    // protected UI _uiPlayer;
 
     protected virtual void Start()
@@ -22,7 +24,7 @@ public abstract class Tank : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
        // _uiPlayer = FindObjectOfType<UI>();
     }
-    public virtual void TakeDamage(int damage)
+    public virtual void TakeDamage(float damage)
     {
         _currentHealth -= damage;
         if (_currentHealth<=0)

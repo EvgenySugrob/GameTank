@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class ShootableTank : Tank
 {
-    
+    [Header("Shoot param")]
     [SerializeField] string _projectileTag;
     [SerializeField] GameObject _projectile;
     [SerializeField] Transform _shotPoint;

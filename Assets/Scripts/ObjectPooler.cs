@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ObjectPooler : MonoBehaviour
@@ -52,8 +53,51 @@ public class ObjectPooler : MonoBehaviour
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
 
-        poolsDict[tag].Enqueue(objectToSpawn);
+        if (objectToSpawn.GetComponent<ParticleSystem>())
+        {
+            ParticleSystem effect = objectToSpawn.GetComponent<ParticleSystem>();
+
+            effect.Play();
+            
+            StartCoroutine(WaitParticleEffectStop(objectToSpawn,tag,effect.main.duration));
+        }
+        else
+        {
+            poolsDict[tag].Enqueue(objectToSpawn);
+        }
 
         return objectToSpawn;
+    }
+    public GameObject SpawnFromPool(string tag, Vector3 position)
+    {
+        if (!poolsDict.ContainsKey(tag))
+            return null;
+
+        GameObject objectToSpawn = poolsDict[tag].Dequeue();
+
+        objectToSpawn.SetActive(true);
+        objectToSpawn.transform.position = position;
+
+
+        if (objectToSpawn.GetComponent<ParticleSystem>())
+        {
+            ParticleSystem effect = objectToSpawn.GetComponent<ParticleSystem>();
+
+            effect.Play();
+            StartCoroutine(WaitParticleEffectStop(objectToSpawn, tag,effect.main.duration));
+        }
+        else
+        {
+            poolsDict[tag].Enqueue(objectToSpawn);
+        }
+
+        return objectToSpawn;
+    }
+
+    IEnumerator WaitParticleEffectStop(GameObject gameObject, string tag, float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        gameObject.SetActive(false);
+        poolsDict[tag].Enqueue(gameObject);
     }
 }

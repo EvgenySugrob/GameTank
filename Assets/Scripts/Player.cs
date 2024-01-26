@@ -7,9 +7,14 @@ public class Player : ShootableTank
 {
     private float _timer;
     private Camera _mainCamera;
+    [Header("Tower Rotation")]
     [SerializeField] Transform _pivotTower;
     [SerializeField] Transform _pivotTurret;
     [SerializeField] Transform _cameraRig;
+    [SerializeField] Transform _mouseAim;
+    [SerializeField] float minAngleTurret = -15f;
+    [SerializeField] float maxAngleTurret = 15f;
+    [SerializeField] private UIPlayer _uiPlayer;
 
     protected override void Start()
     {
@@ -17,11 +22,13 @@ public class Player : ShootableTank
         Cursor.lockState= CursorLockMode.Locked;
         Cursor.visible = false;
         _mainCamera = Camera.main;
+        _uiPlayer = FindObjectOfType<UIPlayer>();
+        _uiPlayer.SetStartParam(_maxHealth);
     }
-    public override void TakeDamage(int damage)
+    public override void TakeDamage(float damage)
     {
         _currentHealth -= damage;
-        //_uiPlayer.UpdateHp(_currentHealth);
+        _uiPlayer.UpdateHealthBar(_currentHealth);
         if(_currentHealth<=0)
         {
             // Stats.ResetAllStats();
@@ -40,10 +47,6 @@ public class Player : ShootableTank
 
     protected override void RotationTower()
     {
-        //_cameraRig Привязка
-        //_pivotTower.rotation = _cameraRig.rotation;
-
-        
         //Поворот только башни
         Vector3 target = _mainCamera.transform.position - _tower.position;
         target = target * (-1);
@@ -51,16 +54,16 @@ public class Player : ShootableTank
         Quaternion rotation = Quaternion.LookRotation(target);
         _tower.rotation = Quaternion.Lerp(_tower.rotation, rotation, _rotationTowerSpeed * Time.deltaTime);
 
-        //поворот дула
+        ////Подъем дула
         Vector3 tower = _cameraRig.rotation.eulerAngles;
-        _tower.rotation = Quaternion.Euler(0, tower.y, 0);
         tower.x = (tower.x > 180) ? tower.x - 360 : tower.x;
         tower.x = Mathf.Clamp(tower.x, -15f, 15f);
         _pivotTurret.localRotation = Quaternion.Euler(tower.x, 0, 0);
 
         //Поворот пивота башни
-        //Vector3 pivotTower = _tower.rotation.eulerAngles;
-        //_pivotTower.rotation = Quaternion.Euler(tower.x, pivotTower.y, 0);
+        Vector3 pivotTower = _tower.rotation.eulerAngles;
+        Quaternion pivotRotation = Quaternion.Euler(tower.x, pivotTower.y, 0);
+        _pivotTower.rotation = Quaternion.Lerp(_pivotTower.rotation, pivotRotation, _rotationTowerSpeed * Time.deltaTime);
     }
     private void FixedUpdate()
     {
@@ -68,9 +71,6 @@ public class Player : ShootableTank
     }
     private void Update()
     {
-
-        //SetAngle(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-
         RotationTower();
         if (_timer<=0)
         {
@@ -84,6 +84,5 @@ public class Player : ShootableTank
         {
             _timer -= Time.deltaTime;
         }
-        
     }
 }
