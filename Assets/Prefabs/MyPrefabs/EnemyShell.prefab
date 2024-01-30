@@ -19779,4 +19779,4 @@ MonoBehaviour:
   _speed: 35
   _tag: EnemyDefaultShell
   _rigidbody: {fileID: 4340731527045385287}
-  _poolerTag: 
+  _poolerTag: ShellExplosion

@@ -1,19 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RangeTank : ShootableTank
 {
     [SerializeField] UIEnemy _uiEnemy;
     [SerializeField] float _distansToPlayer = 5f;
     private float _timer;
-    private Transform _target;
+    [SerializeField] private Transform _target;
+    private NavMeshAgent _agent;
+    private EnemyTankStateManager _stateManager;
 
     protected override void Start()
     {
         base.Start();
         _target = FindObjectOfType<Player>().transform;
         _uiEnemy.SetStartParam(_maxHealth, _target);
+        _agent = GetComponent<NavMeshAgent>();
+        _stateManager= GetComponent<EnemyTankStateManager>();
     }
 
     public override void TakeDamage(float damage)
@@ -24,35 +29,31 @@ public class RangeTank : ShootableTank
 
     protected override void Move()
     {
-        //transform.Translate(Vector2.down * _speed * Time.deltaTime);
-        Vector3 direction = transform.forward;
-        _rigidbody.velocity = direction.normalized * _speed;
-
-        Vector3 targetRotation = (_target.position - transform.position);
-        targetRotation.y = 0;
-        Quaternion rotation = Quaternion.LookRotation(targetRotation);
-        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, _rotationSpeed * Time.fixedDeltaTime);
+        //if (Time.time >= _pathUpdateDelay)
+        //{
+        //    _agent.SetDestination(_target.position);
+        //}
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        RotationTower();
+        //RotationTower();
 
-        if (Vector3.Distance(transform.position,_target.position)>=_distansToPlayer)
-        {
-            Move();
-            SetAngle(_target.position);
-        }
+        //if (Vector3.Distance(transform.position,_target.position)>=_distansToPlayer)
+        //{
+        //    Move();
+        //    SetAngle(_target.position);
+        //}
         
-        if (_timer<0 && Vector3.Distance(transform.position, _target.position) <= _distansToPlayer)
-        {
-            Shoot();
-            _timer = _reloadTime;
-        }
-        else
-        {
-            _timer -= Time.fixedDeltaTime;
-        }
+        //if (_timer<0 && Vector3.Distance(transform.position, _target.position) <= _distansToPlayer)
+        //{
+        //    Shoot();
+        //    _timer = _reloadTime;
+        //}
+        //else
+        //{
+        //    _timer -= Time.deltaTime;
+        //}
     }
 
     protected override void RotationTower()
