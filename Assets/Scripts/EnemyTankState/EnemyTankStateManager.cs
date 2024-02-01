@@ -1,3 +1,4 @@
+using SensorToolkit;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class EnemyTankStateManager : MonoBehaviour
     public EnemyTankPatrolState patrolState = new EnemyTankPatrolState();
     public EnemyTankCheckState checkState = new EnemyTankCheckState();
     public EnemyTankAttackState attackState = new EnemyTankAttackState();
+
+    private Transform _target;
 
     private void Start()
     {
@@ -24,5 +27,12 @@ public class EnemyTankStateManager : MonoBehaviour
     {
         _currentState = state;
         state.EnterState(this);
+    }
+
+    public void GetTowerForCheck(Transform tower, Transform target, TriggerSensor sensor,float distantToPlayer,float towerRotationSpeed)
+    {
+        _target = target;
+        checkState.GetTargetTowerSensor(tower);
+        attackState.GetTargetTowerSensor(target,tower,sensor,distantToPlayer,towerRotationSpeed);
     }
 }

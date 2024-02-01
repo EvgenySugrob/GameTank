@@ -42,6 +42,8 @@ namespace MFlight
         private bool showDebugInfo = false;
 
         [SerializeField] LayerMask usageMask;
+        [SerializeField] private float _minClampAngle;
+        [SerializeField] private float _maxClampAngle;
 
         private Vector3 frozenDirection = Vector3.forward;
         private bool isMouseAimFrozen = false;
@@ -135,10 +137,17 @@ namespace MFlight
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
             float mouseY = -Input.GetAxis("Mouse Y") * mouseSensitivity;
 
+            Debug.Log(mouseY);
             // Rotate the aim target that the plane is meant to fly towards.
             // Use the camera's axes in world space so that mouse motion is intuitive.
+
             mouseAim.Rotate(cam.right, mouseY, Space.World);
             mouseAim.Rotate(cam.up, mouseX, Space.World);
+
+            Vector3 clampAim = mouseAim.eulerAngles;
+            clampAim.x = (clampAim.x>180)?clampAim.x-360:clampAim.x;
+            clampAim.x = Mathf.Clamp(clampAim.x, _minClampAngle, _maxClampAngle);
+            mouseAim.rotation = Quaternion.Euler(clampAim);
 
             // The up vector of the camera normally is aligned to the horizon. However, when
             // looking straight up/down this can feel a bit weird. At those extremes, the camera

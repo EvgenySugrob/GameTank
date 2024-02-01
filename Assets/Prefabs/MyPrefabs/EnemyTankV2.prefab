@@ -5089,7 +5089,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1656759360087943111}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5129,7 +5129,7 @@ GameObject:
   - component: {fileID: 6864101684663786587}
   - component: {fileID: 4186999663207264005}
   - component: {fileID: 8221468830026094767}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5389,11 +5389,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 645baa5ef8f256c4b9101fdcf8bc6534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Length: 40
+  Length: 30
   BaseSize: 0.5
   FOVAngle: 70
   ElevationAngle: 10
-  Resolution: 0
+  Resolution: 2
 --- !u!114 &389527310382962483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5436,7 +5436,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6537551903249996508}
   - component: {fileID: 6197774249977254557}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: HealthSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5530,6 +5530,7 @@ GameObject:
   - component: {fileID: 8956383056443400921}
   - component: {fileID: 2920730889701154398}
   - component: {fileID: -8166460906172753717}
+  - component: {fileID: 97584568093727609}
   m_Layer: 8
   m_Name: EnemyTankV2
   m_TagString: Player
@@ -5602,8 +5603,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.7081093, y: 1.9155647, z: 2.2802992}
-  m_Center: {x: -0.0015080571, y: 0.93223065, z: -0.12432623}
+  m_Size: {x: 1.6770744, y: 1.0143768, z: 2.1212463}
+  m_Center: {x: -0.0053863525, y: 0.4816367, z: -0.044799805}
 --- !u!82 &1332476553595942251
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5823,8 +5824,10 @@ MonoBehaviour:
   _shotPoint: {fileID: 3824447592031397122}
   _reloadTime: 2.5
   _uiEnemy: {fileID: 8221468830026094767}
-  _distansToPlayer: 20
-  _target: {fileID: 0}
+  _distansToPlayer: 25
+  _triggerSensor: {fileID: 389527310382962483}
+  _timer: 0
+  _isAttack: 0
 --- !u!195 &-8166460906172753717
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5834,11 +5837,11 @@ NavMeshAgent:
   m_GameObject: {fileID: 5820675467394215414}
   m_Enabled: 1
   m_AgentTypeID: -1372625422
-  m_Radius: 1.16
+  m_Radius: 1.1
   m_Speed: 3
-  m_Acceleration: 8
+  m_Acceleration: 10
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 240
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
@@ -5847,6 +5850,18 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &97584568093727609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5820675467394215414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a588f3337172dc428106029533d5aa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5955830045516407192
 GameObject:
   m_ObjectHideFlags: 0
@@ -5893,7 +5908,7 @@ GameObject:
   - component: {fileID: 2912430221310889606}
   - component: {fileID: 3661120188149147009}
   - component: {fileID: 5417777258062214278}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10763,7 +10778,7 @@ GameObject:
   - component: {fileID: 668915780105078954}
   - component: {fileID: 6817178149368086543}
   - component: {fileID: 6176875234736187115}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10840,6 +10855,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBar
       objectReference: {fileID: 0}
+    - target: {fileID: 593729063640632682, guid: 3f23ab0b148b4cf4cb558a34eb7d6a23,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3038359362651543257, guid: 3f23ab0b148b4cf4cb558a34eb7d6a23,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -10849,6 +10869,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4349307587742071787, guid: 3f23ab0b148b4cf4cb558a34eb7d6a23,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5051891109271047804, guid: 3f23ab0b148b4cf4cb558a34eb7d6a23,
         type: 3}
@@ -10959,6 +10984,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7168827260229361040, guid: 3f23ab0b148b4cf4cb558a34eb7d6a23,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420983998320076669, guid: 3f23ab0b148b4cf4cb558a34eb7d6a23,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7565877872461210262, guid: 3f23ab0b148b4cf4cb558a34eb7d6a23,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9023601927906176115, guid: 3f23ab0b148b4cf4cb558a34eb7d6a23,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

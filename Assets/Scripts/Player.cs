@@ -12,8 +12,8 @@ public class Player : ShootableTank
     [SerializeField] Transform _pivotTurret;
     [SerializeField] Transform _cameraRig;
     [SerializeField] Transform _mouseAim;
-    [SerializeField] float minAngleTurret = -15f;
-    [SerializeField] float maxAngleTurret = 15f;
+    [SerializeField] float _minAngleTurret = -15f;
+    [SerializeField] float _maxAngleTurret = 15f;
     [SerializeField] private UIPlayer _uiPlayer;
 
     protected override void Start()
@@ -57,7 +57,7 @@ public class Player : ShootableTank
         ////Подъем дула
         Vector3 tower = _cameraRig.rotation.eulerAngles;
         tower.x = (tower.x > 180) ? tower.x - 360 : tower.x;
-        tower.x = Mathf.Clamp(tower.x, -15f, 15f);
+        tower.x = Mathf.Clamp(tower.x, _minAngleTurret, _maxAngleTurret);
         _pivotTurret.localRotation = Quaternion.Euler(tower.x, 0, 0);
 
         //Поворот пивота башни

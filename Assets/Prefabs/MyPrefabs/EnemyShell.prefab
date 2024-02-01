@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5287416459396453633}
   - component: {fileID: 2187596766344948404}
   - component: {fileID: 284080578622250962}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Burst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4918,7 +4918,7 @@ GameObject:
   - component: {fileID: 7954755448477505954}
   - component: {fileID: 9050310351467720579}
   - component: {fileID: 1900499978876267822}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Trails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9741,7 +9741,7 @@ GameObject:
   - component: {fileID: 1514485041243148050}
   - component: {fileID: 3877562264160084029}
   - component: {fileID: 3384366950368268884}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: CompleteShellExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14720,7 +14720,7 @@ GameObject:
   - component: {fileID: 4576504474438286236}
   - component: {fileID: 1798652428521553480}
   - component: {fileID: 278009066911455737}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19554,7 +19554,7 @@ GameObject:
   - component: {fileID: 8311172915329229583}
   - component: {fileID: 4048369876038715983}
   - component: {fileID: 2905732237970266604}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: EnemyShell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19779,4 +19779,4 @@ MonoBehaviour:
   _speed: 35
   _tag: EnemyDefaultShell
   _rigidbody: {fileID: 4340731527045385287}
-  _poolerTag: ShellExplosion
+  _poolerTag: 

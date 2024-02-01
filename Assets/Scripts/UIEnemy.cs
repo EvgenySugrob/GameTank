@@ -31,6 +31,7 @@ public class UIEnemy : MonoBehaviour
     private void Update()
     {
         transform.LookAt(_targetRotation);
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
         if (_easyHealth.value != _mainHealt.value)
         {
             _easyHealth.value = Mathf.Lerp(_easyHealth.value, _mainHealt.value, _speedUpdate * Time.deltaTime);
